@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+	*{
+		margin:0px;
+		padding:0px;
+		
+	}
+	.container{
+		position:absolute;
+		top:0;
+		bottom:0;
+		left:0;
+		right:0;
+		background-color:red;
+		overflow:hidden;
+		
+	}
+	.dino{
+		width:3rem;
+		margin-left:10px;
+		transform:translateY(200px);
+	}
+	.line{
+		width:3650px;
+		position:absolute;
+		border-top: 1px solid grey;
+		transform: translateY(190px);
+		
+	}
+	.line1{
+		width: 3650px;
+		position:absolute;
+		border-top:1px dashed grey;
+		transform: translateY(195px);
+	}
+	.obstacle-box{
+		transform:translateY(190px);
+		display:inline;
+	}
+	.obstacle{
+		width:10em;
+		height:10em;
+		margin-left:200px;
+		transform: translateY(90px);
+	}
+	.obstacle3{
+		width:16em;
+		transform: translateY(115px);
+		margin-left:260px;
+	}
+	.loop{
+		display:flex;
+		overflow:hidden;
+	}
+	.loop img{
+		animation: animate 16s linear infinite;
+	}
+	.jump{
+		animation: jump 1s linear infinite;
+	}
+	@keyframes animate{
+		from{
+			transform: translate(300px,115px);
+		}
+		to{
+			transform:translate(-3600px,115px);
+		}
+	}
+	@keyframes jump{
+		0%{
+			transform: translateY(200px);
+		}
+		50%{
+			transform: translateY(100px);
+		}
+		100%{
+			transform: translateY(200px);
+		}
+	}
+	.btn{
+		font-size:50px;
+		padding: 20px;
+		background-color: black;
+		position:relative;		
+	}
+</style>
+<script src="jQuery.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$(".container").click(function(){
+			$(".dino").addClass("jump").delay(3000).queue(function(next){
+			$(".dino").removeClass('jump');
+			next();
+		});
+	});
+</script>
+</head>
+<body>
+<div class="container">
+	<img class="dino" src="dino.png"></img>
+	<div class="line"></div>
+	<div class="line1">
+	<img class="stroke" src="stroke.png"></div>
+	</div>
+	<div class="loop">
+			<img class="obstacle" src="obstacle2.png"></img>
+			<img class="obstacle" src="obstacle2.png"></img>
+			<img class="obstacle3" src="obstacle3.png"></img>
+			<img class="obstacle" src="obstacle2.png"></img>
+			<img class="obstacle" src="obstacle2.png"></img>
+			<img class="obstacle3" src="obstacle3.png"></img>
+			<img class="obstacle3" src="obstacle3.png"></img>
+			<img class="obstacle" src="obstacle2.png"></img>
+			<img class="obstacle" src="obstacle2.png"></img>	
+		
+	</div>
+</div>
+</body>
+</html>
